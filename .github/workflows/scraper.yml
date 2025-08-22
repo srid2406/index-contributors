@@ -1,0 +1,33 @@
+name: Scrape Nifty Contributors
+
+on:
+  schedule:
+    - cron: "30 10 * * *"  # Runs every day at 10:30 UTC (4:00 PM IST)
+  workflow_dispatch:        # Allow manual trigger
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run scraper
+        run: python scraper.py
+
+      - name: Commit and push
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add data/*.csv
+          git commit -m "Add data for $(date '+%Y-%m-%d')" || echo "No new data"
+          git push

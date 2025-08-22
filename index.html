@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NIFTY 50 – Index Contributors</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+      :root {
+        --bg: #0b1220;
+        --card: #111a2b;
+        --muted: #8aa0b6;
+        --text: #e6eef6;
+        --accent: #6ea8fe;
+        --bad: #ff6b6b;
+        --good: #51cf66;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+          Helvetica, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+      header {
+        padding: 20px 16px;
+        border-bottom: 1px solid #1b2a41;
+        position: sticky;
+        top: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(11, 18, 32, 0.95),
+          rgba(11, 18, 32, 0.7)
+        );
+        backdrop-filter: blur(6px);
+      }
+      h1 {
+        margin: 0;
+        font-size: 20px;
+        letter-spacing: 0.3px;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 16px;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid #1b2a41;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+      .controls {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: 1fr auto auto;
+        align-items: end;
+        padding: 16px;
+      }
+      label {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      input[type="date"],
+      input[type="text"],
+      select,
+      button {
+        height: 40px;
+        border-radius: 12px;
+        border: 1px solid #254264;
+        background: #0e1626;
+        color: var(--text);
+        padding: 0 12px;
+      }
+      button {
+        cursor: pointer;
+        background: linear-gradient(180deg, #1f3b64, #162a47);
+        border: 1px solid #2c4e80;
+      }
+      button:hover {
+        filter: brightness(1.1);
+      }
+      .grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: 1fr;
+      }
+      @media (min-width: 1000px) {
+        .grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .card h2 {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0 0 12px;
+        color: #cfe3ff;
+      }
+      .card .inner {
+        padding: 16px;
+      }
+      canvas {
+        width: 100% !important;
+        height: 400px !important;
+      }
+      .badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        margin-left: 8px;
+        border: 1px solid #254264;
+        color: var(--muted);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 10px;
+        border-bottom: 1px solid #1b2a41;
+        text-align: left;
+      }
+      th {
+        color: #cfe3ff;
+        font-weight: 600;
+      }
+      tr:hover td {
+        background: #0d1730;
+      }
+      .pill {
+        padding: 0.15rem 0.5rem;
+        border-radius: 6px;
+        font-variant-numeric: tabular-nums;
+      }
+      .pill.good {
+        background: rgba(81, 207, 102, 0.12);
+        color: #98f5b0;
+      }
+      .pill.bad {
+        background: rgba(255, 107, 107, 0.12);
+        color: #ff9c9c;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      footer {
+        padding: 20px 16px;
+        color: var(--muted);
+      }
+      .error {
+        color: #ff9c9c;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>
+          NIFTY 50 – Index Contributors Viewer
+          <span id="status" class="badge">idle</span>
+        </h1>
+      </div>
+    </header>
+
+    <div class="container card" style="margin-top: 16px">
+      <div class="controls">
+        <div>
+          <label for="dateInput">Date folder (YYYY-MM-DD)</label>
+          <input id="dateInput" type="date" />
+        </div>
+        <div>
+          <label for="limitInput">Bars to show</label>
+          <select id="limitInput">
+            <option>10</option>
+            <option selected>15</option>
+            <option>20</option>
+            <option>50</option>
+          </select>
+        </div>
+        <div>
+          <button id="loadBtn">Load CSVs</button>
+        </div>
+      </div>
+    </div>
+
+    <main class="container grid" style="margin-top: 16px">
+      <section class="card">
+        <div class="inner">
+          <h2>
+            Positive Contributors <span class="badge" id="posCount">–</span>
+          </h2>
+          <canvas id="posChart"></canvas>
+        </div>
+      </section>
+      <section class="card">
+        <div class="inner">
+          <h2>
+            Negative Contributors <span class="badge" id="negCount">–</span>
+          </h2>
+          <canvas id="negChart"></canvas>
+        </div>
+      </section>
+      <section class="card" style="grid-column: 1/-1">
+        <div class="inner">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              gap: 12px;
+              align-items: end;
+              flex-wrap: wrap;
+            "
+          >
+            <h2>All Contributors</h2>
+            <div>
+              <label for="searchInput" class="muted" style="display: block"
+                >Quick filter</label
+              >
+              <input
+                id="searchInput"
+                type="text"
+                placeholder="Search symbol…"
+                style="width: 220px"
+              />
+            </div>
+          </div>
+          <div style="overflow: auto; max-height: 520px; margin-top: 8px">
+            <table id="allTable">
+              <thead>
+                <tr>
+                  <th>Symbol</th>
+                  <th>LTP</th>
+                  <th>Change %</th>
+                  <th>Contribution</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer style="text-align: center; margin-top: 30px; color: gray">
+      © <span id="year"></span> QuanDao
+    </footer>
+
+    <script>
+      const $ = (s) => document.querySelector(s);
+      const statusBadge = $("#status");
+      const dateInput = $("#dateInput");
+      const limitInput = $("#limitInput");
+      const loadBtn = $("#loadBtn");
+      const posCount = $("#posCount");
+      const negCount = $("#negCount");
+
+      const defaultToday = new Date();
+      const tzOffsetMs = defaultToday.getTimezoneOffset() * 60000;
+      const isoDate = new Date(defaultToday - tzOffsetMs)
+        .toISOString()
+        .slice(0, 10); // yyyy-mm-dd
+      dateInput.value = isoDate;
+
+      let posChart, negChart;
+
+      function setStatus(text) {
+        statusBadge.textContent = text;
+      }
+
+      async function fetchCSV(path) {
+        const res = await fetch(path);
+        if (!res.ok) throw new Error(`Failed to fetch ${path} (${res.status})`);
+        return res.text();
+      }
+
+      function parseCsvToObjects(csvText) {
+        const parsed = Papa.parse(csvText, {
+          header: true,
+          dynamicTyping: true,
+          skipEmptyLines: true,
+        });
+        // normalize keys just in case
+        return parsed.data.map((row) => ({
+          symbol: row.symbol ?? row.Symbol ?? row.SYMBOL ?? "",
+          ltp: Number(row.ltp ?? row.LTP ?? row.last ?? row.price ?? 0),
+          changepct: Number(
+            row.changepct ??
+              row.changePct ??
+              row["change%"] ??
+              row.change_pct ??
+              0
+          ),
+          contribution: Number(
+            row.contribution ?? row.contrib ?? row.weight ?? 0
+          ),
+        }));
+      }
+
+      function byNumberDesc(key) {
+        return (a, b) => Number(b[key]) - Number(a[key]);
+      }
+      function byNumberAsc(key) {
+        return (a, b) => Number(a[key]) - Number(b[key]);
+      }
+
+      function upsertChart(canvasId, cfg, existing) {
+        const ctx = document.getElementById(canvasId);
+        if (existing) {
+          existing.destroy();
+        }
+        return new Chart(ctx, cfg);
+      }
+
+      function buildBarConfig(title, labels, values) {
+        return {
+          type: "bar",
+          data: { labels, datasets: [{ label: title, data: values }] },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: (ctx) => ` ${ctx.dataset.label}: ${ctx.parsed.y}`,
+                },
+              },
+            },
+            scales: {
+              x: { ticks: { maxRotation: 0, minRotation: 0, autoSkip: true } },
+              y: { title: { display: true, text: "Index Contribution" } },
+            },
+          },
+        };
+      }
+
+      function renderTable(rows) {
+        const tbody = document.querySelector("#allTable tbody");
+        tbody.innerHTML = "";
+        for (const r of rows) {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+          <td>${r.symbol}</td>
+          <td class="muted">${(r.ltp ?? 0).toLocaleString()}</td>
+          <td><span class="pill ${r.changepct >= 0 ? "good" : "bad"}">${Number(
+            r.changepct
+          ).toFixed(2)}%</span></td>
+          <td>${Number(r.contribution).toFixed(2)}</td>
+        `;
+          tbody.appendChild(tr);
+        }
+      }
+
+      function attachFilter(fullRows) {
+        const input = document.getElementById("searchInput");
+        input.oninput = () => {
+          const q = input.value.trim().toLowerCase();
+          const filtered = !q
+            ? fullRows
+            : fullRows.filter((r) => r.symbol.toLowerCase().includes(q));
+          renderTable(filtered);
+        };
+      }
+
+      async function load() {
+        const date = dateInput.value || isoDate;
+        const limit = Number(limitInput.value);
+        const base = `data/${date}`;
+        setStatus("loading…");
+        try {
+          const [posCSV, negCSV, allCSV] = await Promise.all([
+            fetchCSV(`${base}/positive_contributors.csv`),
+            fetchCSV(`${base}/negative_contributors.csv`),
+            fetchCSV(`${base}/all_contributors.csv`),
+          ]);
+
+          const pos = parseCsvToObjects(posCSV)
+            .sort(byNumberDesc("contribution"))
+            .slice(0, limit);
+          const neg = parseCsvToObjects(negCSV)
+            .sort(byNumberAsc("contribution"))
+            .slice(0, limit);
+          const all = parseCsvToObjects(allCSV).sort(
+            byNumberDesc("contribution")
+          );
+
+          posCount.textContent = `${pos.length} shown`;
+          negCount.textContent = `${neg.length} shown`;
+
+          posChart = upsertChart(
+            "posChart",
+            buildBarConfig(
+              "Positive Contribution",
+              pos.map((r) => r.symbol),
+              pos.map((r) => r.contribution)
+            ),
+            posChart
+          );
+
+          negChart = upsertChart(
+            "negChart",
+            buildBarConfig(
+              "Negative Contribution",
+              neg.map((r) => r.symbol),
+              neg.map((r) => r.contribution)
+            ),
+            negChart
+          );
+
+          renderTable(all);
+          attachFilter(all);
+          setStatus("loaded");
+        } catch (err) {
+          console.error(err);
+          setStatus("error");
+          alert("Failed to load CSV files for " + date + "\n" + err.message);
+        }
+      }
+
+      loadBtn.addEventListener("click", load);
+      // auto-load initially
+      window.addEventListener("DOMContentLoaded", load);
+    </script>
+  </body>
+</html>
