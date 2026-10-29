@@ -1,0 +1,12 @@
+symbol,ltp,changepct,contribution,symbolInfo
+HDFCBANK,683.3,-0.29,-6.9,"{'symbol': 'HDFCBANK', 'instrumentToken': 1333, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+MARUTI,11426.0,-1.32,-4.58,"{'symbol': 'MARUTI', 'instrumentToken': 10999, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+TRENT,2861.7,-1.79,-3.46,"{'symbol': 'TRENT', 'instrumentToken': 1964, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+BAJAJ-AUTO,10383.0,-0.97,-2.54,"{'symbol': 'BAJAJ-AUTO', 'instrumentToken': 16669, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+HINDALCO,886.3,-0.83,-2.5,"{'symbol': 'HINDALCO', 'instrumentToken': 1363, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+EICHERMOT,7238.0,-0.85,-1.85,"{'symbol': 'EICHERMOT', 'instrumentToken': 910, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+SBILIFE,1652.0,-0.88,-1.49,"{'symbol': 'SBILIFE', 'instrumentToken': 21808, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+CIPLA,1358.0,-0.56,-0.92,"{'symbol': 'CIPLA', 'instrumentToken': 694, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+TECHM,1769.6,-0.39,-0.84,"{'symbol': 'TECHM', 'instrumentToken': 13538, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+INDIGO,4675.0,-0.32,-0.79,"{'symbol': 'INDIGO', 'instrumentToken': 11195, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+MAXHEALTH,851.15,-0.04,-0.06,"{'symbol': 'MAXHEALTH', 'instrumentToken': 22377, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
