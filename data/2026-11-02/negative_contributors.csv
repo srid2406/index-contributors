@@ -1,0 +1,13 @@
+symbol,ltp,changepct,contribution,symbolInfo
+INFY,1161.0,-2.03,-16.26,"{'symbol': 'INFY', 'instrumentToken': 1594, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+ICICIBANK,1387.4,-0.76,-16.12,"{'symbol': 'ICICIBANK', 'instrumentToken': 4963, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+AXISBANK,1209.0,-0.66,-5.21,"{'symbol': 'AXISBANK', 'instrumentToken': 5900, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+KOTAKBANK,458.35,-0.7,-4.88,"{'symbol': 'KOTAKBANK', 'instrumentToken': 1922, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+SUNPHARMA,1770.0,-0.43,-1.9,"{'symbol': 'SUNPHARMA', 'instrumentToken': 3351, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+BSE,3490.0,-0.58,-1.65,"{'symbol': 'BSE', 'instrumentToken': 19585, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+DRREDDY,1342.0,-0.74,-1.27,"{'symbol': 'DRREDDY', 'instrumentToken': 881, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+HDFCLIFE,522.25,-0.5,-0.65,"{'symbol': 'HDFCLIFE', 'instrumentToken': 467, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+TECHM,1786.9,-0.22,-0.47,"{'symbol': 'TECHM', 'instrumentToken': 13538, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+BAJAJ-AUTO,10339.0,-0.11,-0.29,"{'symbol': 'BAJAJ-AUTO', 'instrumentToken': 16669, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+EICHERMOT,7213.0,-0.1,-0.22,"{'symbol': 'EICHERMOT', 'instrumentToken': 910, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+TCS,2501.7,-0.04,-0.19,"{'symbol': 'TCS', 'instrumentToken': 11536, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
