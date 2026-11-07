@@ -1,0 +1,6 @@
+symbol,ltp,changepct,contribution,symbolInfo
+POWERGRID,259.9,-0.48,-1.36,"{'symbol': 'POWERGRID', 'instrumentToken': 14977, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+EICHERMOT,7669.5,-0.56,-1.34,"{'symbol': 'EICHERMOT', 'instrumentToken': 910, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+SHRIRAMFIN,961.15,-0.3,-0.99,"{'symbol': 'SHRIRAMFIN', 'instrumentToken': 4306, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+TMPV,292.0,-0.58,-0.83,"{'symbol': 'TMPV', 'instrumentToken': 3456, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+GRASIM,3227.0,-0.02,-0.06,"{'symbol': 'GRASIM', 'instrumentToken': 1232, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
