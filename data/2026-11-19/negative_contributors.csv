@@ -1,0 +1,9 @@
+symbol,ltp,changepct,contribution,symbolInfo
+INFY,1091.9,-1.52,-13.25,"{'symbol': 'INFY', 'instrumentToken': 1594, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+TCS,2342.7,-1.55,-8.01,"{'symbol': 'TCS', 'instrumentToken': 11536, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+TECHM,1723.0,-1.54,-3.69,"{'symbol': 'TECHM', 'instrumentToken': 13538, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+HCLTECH,1332.9,-0.88,-2.82,"{'symbol': 'HCLTECH', 'instrumentToken': 7229, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+APOLLOHOSP,8738.0,-0.94,-1.94,"{'symbol': 'APOLLOHOSP', 'instrumentToken': 157, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+INDIGO,5475.0,-0.44,-1.21,"{'symbol': 'INDIGO', 'instrumentToken': 11195, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+BAJFINANCE,1092.85,-0.09,-0.57,"{'symbol': 'BAJFINANCE', 'instrumentToken': 317, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+ONGC,224.52,-0.21,-0.45,"{'symbol': 'ONGC', 'instrumentToken': 2475, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
