@@ -1,0 +1,9 @@
+symbol,ltp,changepct,contribution,symbolInfo
+TATASTEEL,159.3,-2.27,-8.75,"{'symbol': 'TATASTEEL', 'instrumentToken': 3499, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+BHARTIARTL,2117.5,-0.52,-6.85,"{'symbol': 'BHARTIARTL', 'instrumentToken': 10604, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+HINDALCO,889.9,-1.17,-3.99,"{'symbol': 'HINDALCO', 'instrumentToken': 1363, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+JSWSTEEL,1302.5,-0.72,-2.14,"{'symbol': 'JSWSTEEL', 'instrumentToken': 11723, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+MAXHEALTH,1076.3,-1.22,-2.1,"{'symbol': 'MAXHEALTH', 'instrumentToken': 22377, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+SHRIRAMFIN,989.95,-0.6,-2.04,"{'symbol': 'SHRIRAMFIN', 'instrumentToken': 4306, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+ADANIENT,2668.5,-0.35,-0.85,"{'symbol': 'ADANIENT', 'instrumentToken': 25, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+ONGC,222.0,-0.38,-0.82,"{'symbol': 'ONGC', 'instrumentToken': 2475, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
