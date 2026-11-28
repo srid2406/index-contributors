@@ -1,0 +1,11 @@
+symbol,ltp,changepct,contribution,symbolInfo
+BEL,411.45,1.72,5.76,"{'symbol': 'BEL', 'instrumentToken': 383, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+TITAN,4675.3,0.95,4.4,"{'symbol': 'TITAN', 'instrumentToken': 3506, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+JSWSTEEL,1321.2,1.4,4.06,"{'symbol': 'JSWSTEEL', 'instrumentToken': 11723, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+HINDALCO,923.0,0.82,2.7,"{'symbol': 'HINDALCO', 'instrumentToken': 1363, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+INDIGO,5659.6,0.62,1.69,"{'symbol': 'INDIGO', 'instrumentToken': 11195, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+ONGC,224.31,0.64,1.38,"{'symbol': 'ONGC', 'instrumentToken': 2475, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+SBILIFE,1856.0,0.74,1.38,"{'symbol': 'SBILIFE', 'instrumentToken': 21808, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+POWERGRID,268.2,0.47,1.36,"{'symbol': 'POWERGRID', 'instrumentToken': 14977, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+TATASTEEL,163.94,0.24,0.9,"{'symbol': 'TATASTEEL', 'instrumentToken': 3499, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
+TRENT,3273.0,0.32,0.68,"{'symbol': 'TRENT', 'instrumentToken': 1964, 'exchange': 'NSE', 'exchangeSegment': 'CASH'}"
